@@ -1,0 +1,11 @@
+---
+title: Namer App
+description: A simple Flutter app that generates random word pair suggestions and allows users to save their favorites.
+url: https://github.com/AgnivaMaiti/Namer-App
+date: 2023-04-14
+published: true
+---
+
+A simple Flutter application that generates random word pair suggestions and allows users to save their favorites. This project follows the [Flutter Codelab: Write Your First Flutter App](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#0).
+
+Check out the project on GitHub: [Namer App](https://github.com/AgnivaMaiti/Namer-App).
