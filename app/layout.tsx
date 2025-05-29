@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     default: "agniva.tech",
     template: "%s | agniva.tech",
   },
-  description: "Co-founder of mynimalistic.tech and founder of Tatvani",
+  description: "Computer Science student, AI-ML and Android dev enthusiast",
   openGraph: {
     title: "agniva.tech",
     description:
-      "Co-founder of mynimalistic.tech and founder of Tatvani",
+      "Computer Science student, AI-ML and Android dev enthusiast",
     url: "https://agniva.tech",
     siteName: "agniva.tech",
     images: [
