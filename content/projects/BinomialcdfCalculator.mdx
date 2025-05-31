@@ -1,0 +1,34 @@
+---
+title: Cumulative Binomial Distribution Calculator
+description: A Python Tkinter GUI app that calculates cumulative binomial probabilities using SciPy's statistical functions.
+repository: AgnivaMaiti/BinomialcdfCalculator
+date: 2023-11-20
+published: true
+---
+
+This project is a desktop GUI application built using Python Tkinter and SciPy to calculate the cumulative probability P(X ≤ x) of a binomial distribution.
+
+## Features
+
+- **Input:**
+  - Number of trials (n)
+  - Probability of success (p)
+  - Target value (x)
+- **Output:**
+  - Displays cumulative probability P(X ≤ x) using `scipy.stats.binom.cdf`
+
+## How It Works
+
+The app uses `scipy.stats.binom.cdf(x, n, p)` to compute the cumulative binomial probability. For example, if n = 10, p = 0.5, and x = 3, the result would be:
+
+```
+P(X ≤ 3) = 0.1719
+```
+
+## Requirements
+
+- Python 3.x
+- Tkinter
+- SciPy
+
+Explore the source code on GitHub: [BinomialcdfCalculator](https://github.com/AgnivaMaiti/BinomialcdfCalculator/).

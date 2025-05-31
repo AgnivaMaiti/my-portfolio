@@ -1,0 +1,36 @@
+---
+title: Decimal to Binary Converter (Arduino)
+description: An Arduino-based decimal to 4-bit binary converter that increments the value on a button press and displays the binary output using LEDs.
+repository: AgnivaMaiti/DeciToBi
+date: 2023-06-10
+published: true
+---
+
+This project is an Arduino-based decimal to binary converter that uses a push-button to increment a decimal number (0–15) and displays its 4-bit binary equivalent using four LEDs.
+
+## Components Used
+
+- Arduino Uno (or compatible board)
+- 4x LEDs
+- 4x Resistors (220Ω)
+- Push-button
+- Breadboard & Jumper wires
+
+## How It Works
+
+- Press the button to increment the decimal number
+- The number cycles from 0 to 15 and then resets
+- The 4-bit binary representation of the current number is displayed using the LEDs
+
+## Logic
+
+- On every rising edge (button press), the decimal value is incremented
+- A function `decimalToBinary()` converts the value to binary
+- The binary output is displayed using `digitalWrite()` on four LEDs
+
+## Pin Configuration
+
+- LEDs: Pins 2–5
+- Button: Pin 6
+
+Explore the source code on GitHub: [DeciToBi Project](https://github.com/AgnivaMaiti/DeciToBi/).
