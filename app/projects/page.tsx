@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { allProjects } from "contentlayer/generated";
+import { allProjects, Project } from "contentlayer/generated"; // Import Project type from contentlayer
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
@@ -11,15 +11,16 @@ const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 
-interface Project {
-  slug: string;
-  title: string;
-  description: string;
-  date?: string;
-  published: boolean;
-  repository?: string;
-  url?: string;
-}
+// Remove the local Project interface since we're using the one from contentlayer
+// interface Project {
+//   slug: string;
+//   title: string;
+//   description: string;
+//   date?: string;
+//   published: boolean;
+//   repository?: string;
+//   url?: string;
+// }
 
 export default async function ProjectsPage() {
   const views = (
