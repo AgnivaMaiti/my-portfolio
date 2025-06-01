@@ -1,0 +1,65 @@
+---
+title: Screen Time Tracker
+description: A Flutter package that tracks the time spent on different screens in your application to monitor user engagement and app usage patterns.
+repository: AgnivaMaiti/screen_time_tracker
+url: https://pub.dev/packages/screen_time_tracker
+date: 2024-09-05
+published: true
+---
+
+A lightweight Flutter package designed to track user engagement by monitoring time spent on different screens within your application. Features automatic tracking, debug modes, and summary widgets for comprehensive usage analytics.
+
+## 🛠️ Technologies Used
+
+- Flutter framework
+- Dart programming language
+- Singleton design pattern
+- Widget lifecycle management
+- Pub.dev package publishing
+
+## 🧠 How It Works
+
+1. Singleton class ensures consistent tracking across the app
+2. Automatic screen time tracking when wrapped with ScreenTimeWidget
+3. Real-time monitoring of screen transitions
+4. Built-in summary generation and display capabilities
+5. Optional debug mode for development insights
+
+## 🚀 Features
+
+- **Singleton Architecture**: Single instance ensures accurate tracking
+- **Debug Mode**: Enable/disable logging for development
+- **Automatic Tracking**: Seamless integration with existing screens
+- **Summary Widget**: Built-in UI component for displaying analytics
+- **Reset Functionality**: Clear tracking data when needed
+- **Easy Integration**: Minimal code changes required
+
+## 📊 Usage Examples
+
+```dart
+// Wrap your screen with tracking
+ScreenTimeWidget(
+  screenName: 'Home Screen',
+  child: YourHomeScreenWidget(),
+)
+
+// Display summary
+ScreenTimeSummaryWidget();
+
+// Manual control
+ScreenTimeTracker.instance.startTracking('Custom Screen');
+ScreenTimeTracker.instance.stopTracking('Custom Screen');
+```
+
+## 🔧 Available Methods
+
+- `enableDebugMode()`: Enable debug logging
+- `disableDebugMode()`: Disable debug logging
+- `startTracking(String screenName)`: Begin tracking specific screen
+- `stopTracking(String screenName)`: End tracking for specific screen
+- `getTimeSpentOnScreen(String screenName)`: Retrieve time data
+- `resetScreenTime()`: Clear all tracking data
+- `getScreenTimeSummary()`: Get comprehensive usage summary
+
+Published on Pub.dev: [screen_time_tracker](https://pub.dev/packages/screen_time_tracker)  
+Explore the source code on GitHub: [AgnivaMaiti/screen_time_tracker](https://github.com/AgnivaMaiti/screen_time_tracker)

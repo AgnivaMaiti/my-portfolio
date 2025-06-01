@@ -1,0 +1,58 @@
+---
+title: Indian Numeral Converter
+description: A Dart package for formatting numbers in the Indian numeral system and converting numbers to words, with support for South Asian currency symbols.
+repository: AgnivaMaiti/indian_numeral_converter
+url: https://pub.dev/packages/indian_numeral_converter
+date: 2024-08-20
+published: true
+---
+
+A comprehensive Dart package that formats numbers according to the Indian numeral system and converts numbers to words. Features extensive support for South Asian currency symbols and regional formatting conventions.
+
+## 🛠️ Technologies Used
+
+- Dart programming language
+- Pub.dev package publishing
+- Indian numeral system algorithms
+- Currency symbol mapping
+
+## 🧠 How It Works
+
+1. Accepts numeric input in standard format
+2. Applies Indian grouping conventions (e.g., 12,34,56,789)
+3. Converts numbers to written words in Indian format
+4. Supports multiple South Asian currency symbols
+5. Provides easy-to-use API for Flutter applications
+
+## 🚀 Features
+
+- **Indian Grouping Format**: Numbers formatted with Indian conventions
+- **Number to Words**: Convert numbers to written Indian format
+- **Multi-Currency Support**: 8 South Asian currencies supported
+  - India: ₹
+  - Bangladesh: ৳
+  - Pakistan: ₨
+  - Nepal: रु
+  - Bhutan: Nu
+  - Afghanistan: ؋
+  - Maldives: Rf
+  - Sri Lanka: Rs
+
+## 📊 Usage Examples
+
+```dart
+// Format numbers with Indian grouping
+IndianNumeralConverter.formatToIndian(123456789);
+// Output: 12,34,56,789
+
+// Format with currency symbols
+IndianNumeralConverter.formatToIndian(1000000, currency: "Nepal");
+// Output: रु 10,00,000
+
+// Convert to words
+IndianNumeralConverter.formatToIndianWords(123456789, currency: "Sri Lanka");
+// Output: Rs Twelve Crore Thirty Four Lakh Fifty Six Thousand Seven Hundred Eighty Nine
+```
+
+Published on Pub.dev: [indian_numeral_converter](https://pub.dev/packages/indian_numeral_converter)  
+Explore the source code on GitHub: [AgnivaMaiti/indian_numeral_converter](https://github.com/AgnivaMaiti/indian_numeral_converter)

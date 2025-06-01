@@ -1,0 +1,41 @@
+---
+title: Semantic Emotification with OCR
+description: A Python tool that performs OCR on images and maps detected words to semantically relevant emojis using NLTK and computer vision.
+repository: AgnivaMaiti/Semantic-Emotification
+date: 2023-10-12
+published: true
+---
+
+This Python project utilizes EasyOCR, emoji library, difflib, NLTK, and OpenCV to perform Optical Character Recognition (OCR) on images and map detected words to semantically relevant emojis. The goal is to identify and display emojis corresponding to the words found in the image.
+
+## 🛠️ Technologies Used
+
+- Python
+- EasyOCR for text detection
+- NLTK for natural language processing
+- OpenCV for image processing
+- emoji library for emoji representation
+- difflib for string matching algorithms
+
+## 🧠 How It Works
+
+1. The script reads an input image using OpenCV
+2. EasyOCR extracts text from the image
+3. Text is preprocessed (removing stopwords, punctuation, etc.)
+4. Each processed word is matched to the closest keyword in a predefined emoji dictionary
+5. Corresponding emojis are displayed alongside the detected words
+
+## 🚀 Prerequisites
+
+Before running the script, the following Python libraries are required:
+
+```bash
+pip install easyocr emoji difflib matplotlib opencv-python-headless nltk
+python -m nltk.downloader stopwords punkt
+```
+
+## 📊 Example Output
+
+The script prints the detected text, preprocessed text, closest keywords, and corresponding emojis. If OCR does not detect any text in the image, a message stating so will be displayed.
+
+Explore the source code on GitHub: [Semantic-Emotification](https://github.com/AgnivaMaiti/Semantic-Emotification)

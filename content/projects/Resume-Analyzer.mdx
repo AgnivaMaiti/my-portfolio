@@ -1,0 +1,44 @@
+---
+title: One-Click Resume Analyzer (OCRA)
+description: A Streamlit app that analyzes resumes against job descriptions using Gemini 1.5 Flash to provide grammar checks, identify missing skills, and calculate match scores.
+repository: AgnivaMaiti/resume-analyzer
+date: 2024-05-10
+published: true
+---
+
+This Streamlit application helps job seekers optimize their resumes by comparing them against specific job descriptions. Using Google's Gemini 1.5 Flash AI, the app extracts text from uploaded PDF resumes and provides actionable feedback to improve job application success rates.
+
+## 🛠️ Technologies Used
+
+- Python
+- Streamlit for the web interface
+- PyPDF2 for PDF text extraction
+- Google Gemini 1.5 Flash for AI analysis
+- Streamlit Cloud for deployment
+
+## 🧠 How It Works
+
+1. Users upload their PDF resume
+2. Users enter the job description they're applying for
+3. PyPDF2 extracts text content from the resume
+4. Gemini AI analyzes the resume against the job description
+5. The app displays comprehensive feedback including:
+   - Grammar-corrected resume text
+   - List of missing skills needed for the job
+   - Keyword match score (0-100)
+
+## 🚀 Features
+
+- **PDF Processing**: Extract text from uploaded resumes
+- **AI-Powered Analysis**: Compare resumes to job descriptions
+- **Grammar Correction**: Get a polished version of your resume text
+- **Skills Gap Analysis**: Identify missing skills to improve your resume
+- **Match Scoring**: Receive a quantitative score of how well your resume matches the job
+
+## 📊 Implementation
+
+The application uses Streamlit's intuitive interface components for file uploads and text input. The backend leverages Google's Gemini 1.5 Flash model to perform sophisticated natural language processing tasks, ensuring comprehensive and accurate resume analysis.
+
+Try it live: [One-Click Resume Analyzer](https://one-click-resume-analyzer.streamlit.app/)
+
+Explore the source code on GitHub: [AgnivaMaiti/resume-analyzer](https://github.com/AgnivaMaiti/resume-analyzer)
