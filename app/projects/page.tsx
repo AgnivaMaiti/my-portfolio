@@ -10,29 +10,59 @@ import { Eye } from "lucide-react";
 const redis = Redis.fromEnv();
 
 export const revalidate = 60;
+
+interface Project {
+  slug: string;
+  title: string;
+  description: string;
+  date?: string;
+  published: boolean;
+  repository?: string;
+  url?: string;
+}
+
 export default async function ProjectsPage() {
   const views = (
     await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
+      ...allProjects.map((p: Project) => ["pageviews", "projects", p.slug].join(":")),
     )
-  ).reduce((acc, v, i) => {
+  ).reduce((acc: Record<string, number>, v: number | null, i: number) => {
     acc[allProjects[i].slug] = v ?? 0;
     return acc;
   }, {} as Record<string, number>);
 
-  const featured = allProjects.find((project) => project.slug === "murmuration")!;
-  const top2 = allProjects.find((project) => project.slug === "geeti")!;
-  const top3 = allProjects.find((project) => project.slug === "startup-validator")!;
-  const sorted = allProjects
-    .filter((p) => p.published)
+  console.log('Available projects:', allProjects.map((p: Project) => ({ slug: p.slug, published: p.published })));
+  
+  // Get only published projects for selection
+  const publishedProjects = allProjects.filter((p: Project) => p.published);
+  
+  // Ensure we have enough projects and use safe fallbacks
+  const featured = publishedProjects.find((project: Project) => project.slug === "Murmuration") || publishedProjects[0];
+  
+  const top2 = publishedProjects.find((project: Project) => project.slug === "Geeti") || 
+               publishedProjects.find((project: Project) => project.slug === "checklist") || 
+               publishedProjects.find((project: Project) => project.slug !== featured?.slug) ||
+               publishedProjects[1] ||
+               featured;
+               
+  const top3 = publishedProjects.find((project: Project) => project.slug === "Startup-Validator") || 
+               publishedProjects.find((project: Project) => project.slug === "Resume-Analyzer") || 
+               publishedProjects.find((project: Project) => 
+                 project.slug !== featured?.slug && 
+                 project.slug !== top2?.slug
+               ) ||
+               publishedProjects[2] ||
+               featured;
+  
+  const sorted = publishedProjects
     .filter(
-      (project) =>
-        project.slug !== featured.slug &&
-        project.slug !== top2.slug &&
-        project.slug !== top3.slug,
+      (project: Project) =>
+        project.slug !== featured?.slug &&
+        project.slug !== top2?.slug &&
+        project.slug !== top3?.slug,
     )
     .sort(
-      (a, b) =>
+      (a: Project, b: Project) =>
         new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
         new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
     );
@@ -94,7 +124,7 @@ export default async function ProjectsPage() {
           </Card>
 
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
-            {[top2, top3].map((project) => (
+            {[top2, top3].filter(Boolean).map((project: Project, _: number, i: number) => (
               <Card key={project.slug}>
                 <Article project={project} views={views[project.slug] ?? 0} />
               </Card>
@@ -106,8 +136,8 @@ export default async function ProjectsPage() {
         <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
           <div className="grid grid-cols-1 gap-4">
             {sorted
-              .filter((_, i) => i % 3 === 0)
-              .map((project) => (
+              .filter((_: Project, i: number) => i % 3 === 0)
+              .map((project: Project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
                 </Card>
@@ -115,8 +145,8 @@ export default async function ProjectsPage() {
           </div>
           <div className="grid grid-cols-1 gap-4">
             {sorted
-              .filter((_, i) => i % 3 === 1)
-              .map((project) => (
+              .filter((_: Project, i: number) => i % 3 === 1)
+              .map((project: Project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
                 </Card>
@@ -124,8 +154,8 @@ export default async function ProjectsPage() {
           </div>
           <div className="grid grid-cols-1 gap-4">
             {sorted
-              .filter((_, i) => i % 3 === 2)
-              .map((project) => (
+              .filter((_: Project, i: number) => i % 3 === 2)
+              .map((project: Project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
                 </Card>
