@@ -1,36 +1,15 @@
 import Link from "next/link";
 import React from "react";
-import { allProjects, Project } from "contentlayer/generated"; // Import Project type from contentlayer
+import { allProjects, Project } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
-
-const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 
-// Remove the local Project interface since we're using the one from contentlayer
-// interface Project {
-//   slug: string;
-//   title: string;
-//   description: string;
-//   date?: string;
-//   published: boolean;
-//   repository?: string;
-//   url?: string;
-// }
-
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p: Project) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc: Record<string, number>, v: number | null, i: number) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
+  const views: Record<string, number> = {};
 
   console.log('Available projects:', allProjects.map((p: Project) => ({ slug: p.slug, published: p.published })));
   
@@ -167,3 +146,4 @@ export default async function ProjectsPage() {
     </div>
   );
 }
+
