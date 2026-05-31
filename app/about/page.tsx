@@ -4,7 +4,7 @@ import { Card } from "../components/card";
 
 export default function AboutPage() {
   return (
-    <div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0 min-h-screen">
+    <div className="bg-gradient-to-tl from-zinc-100/0 via-zinc-200 to-zinc-100/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 min-h-screen">
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-4xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         
@@ -16,12 +16,12 @@ export default function AboutPage() {
                 <span className="text-xl font-bold text-zinc-900">AM</span>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-zinc-100">Nomoskar! I'm Agniva Maiti</h2>
-                <p className="text-zinc-400 text-lg">Computer Science Student & Developer</p>
+                <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Nomoskar! I'm Agniva Maiti</h2>
+                <p className="text-zinc-600 dark:text-zinc-400 text-lg">Computer Science Student & Developer</p>
               </div>
             </div>
             
-            <div className="space-y-6 text-zinc-300 leading-relaxed text-lg">
+            <div className="space-y-6 text-zinc-700 dark:text-zinc-300 leading-relaxed text-lg">
               <p>
                 I'm a passionate Computer Science student with a deep fascination for 
                 AI/ML and Android development. My journey in technology began with curiosity 

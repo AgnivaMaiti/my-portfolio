@@ -247,24 +247,24 @@ const skillCategories = [
 
 export default function SkillsPage() {
 	return (
-		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
+		<div className="bg-gradient-to-tl from-zinc-100/0 via-zinc-200 to-zinc-100/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 min-h-screen">
 			<Navigation />
 			<div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
 				<div className="max-w-2xl mx-auto lg:mx-0">
-					<h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+					<h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
 						Skills & Technologies
 					</h2>
-					<p className="mt-4 text-zinc-400">
+					<p className="mt-4 text-zinc-600 dark:text-zinc-400">
 						Here are the technologies and tools I work with to bring ideas to life.
 					</p>
 				</div>
-				<div className="w-full h-px bg-zinc-800" />
+				<div className="w-full h-px bg-zinc-300 dark:bg-zinc-800" />
 
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{skillCategories.map((category, categoryIndex) => (
 						<Card key={categoryIndex}>
 							<div className="p-6">
-								<h3 className="text-xl font-semibold text-zinc-100 mb-6">
+								<h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-6">
 									{category.title}
 								</h3>
 								<div className="flex flex-wrap gap-3">

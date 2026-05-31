@@ -20,7 +20,7 @@ const components = {
 	h2: ({ className, ...props }) => (
 		<h2
 			className={clsx(
-				"mt-10 scroll-m-20 border-b border-b-zinc-800 pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+				"mt-10 scroll-m-20 border-b border-b-zinc-300 dark:border-b-zinc-800 pb-1 text-3xl font-semibold tracking-tight first:mt-0",
 				className,
 			)}
 			{...props}
@@ -65,7 +65,7 @@ const components = {
 	a: ({ className, ...props }) => (
 		<Link
 			className={clsx(
-				"font-medium text-zinc-900 underline underline-offset-4",
+				"font-medium text-zinc-900 dark:text-zinc-100 underline underline-offset-4",
 				className,
 			)}
 			{...props}
@@ -89,7 +89,7 @@ const components = {
 	blockquote: ({ className, ...props }) => (
 		<blockquote
 			className={clsx(
-				"mt-6 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
+				"mt-6 border-l-2 border-zinc-300 dark:border-zinc-700 pl-6 italic text-zinc-800 dark:text-zinc-200 [&>*]:text-zinc-600 dark:[&>*]:text-zinc-400",
 				className,
 			)}
 			{...props}
@@ -102,13 +102,15 @@ const components = {
 	}: React.ImgHTMLAttributes<HTMLImageElement>) => (
 		// eslint-disable-next-line @next/next/no-img-element
 		<img
-			className={clsx("rounded-md border border-zinc-200", className)}
+			className={clsx("rounded-md border border-zinc-200 dark:border-zinc-800", className)}
 			alt={alt}
+			loading="lazy"
+			decoding="async"
 			{...props}
 		/>
 	),
 	hr: ({ ...props }) => (
-		<hr className="my-4 border-zinc-200 md:my-8" {...props} />
+		<hr className="my-4 border-zinc-200 dark:border-zinc-800 md:my-8" {...props} />
 	),
 	table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
 		<div className="w-full my-6 overflow-y-auto">
@@ -118,7 +120,7 @@ const components = {
 	tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
 		<tr
 			className={clsx(
-				"m-0 border-t border-zinc-300 p-0 even:bg-zinc-100",
+				"m-0 border-t border-zinc-300 dark:border-zinc-800 p-0 even:bg-zinc-100 dark:even:bg-zinc-800/50",
 				className,
 			)}
 			{...props}
@@ -127,7 +129,7 @@ const components = {
 	th: ({ className, ...props }) => (
 		<th
 			className={clsx(
-				"border border-zinc-200 px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+				"border border-zinc-200 dark:border-zinc-800 px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
 				className,
 			)}
 			{...props}
@@ -136,7 +138,7 @@ const components = {
 	td: ({ className, ...props }) => (
 		<td
 			className={clsx(
-				"border border-zinc-200 px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+				"border border-zinc-200 dark:border-zinc-800 px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
 				className,
 			)}
 			{...props}
@@ -154,7 +156,7 @@ const components = {
 	code: ({ className, ...props }) => (
 		<code
 			className={clsx(
-				"relative rounded border bg-zinc-300 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-zinc-600",
+				"relative rounded border bg-zinc-300 dark:bg-zinc-800/50 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-zinc-800 dark:text-zinc-300",
 				className,
 			)}
 			{...props}
