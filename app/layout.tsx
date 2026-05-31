@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/theme-provider";
+import { ThemeToggle } from "./components/theme-toggle";
 
 export const metadata: Metadata = {
   title: {
@@ -70,8 +71,11 @@ export default function RootLayout({
         className={`bg-white dark:bg-black text-zinc-900 dark:text-zinc-50 ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
           }`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
+          <div className="fixed bottom-6 right-6 z-50">
+            <ThemeToggle />
+          </div>
           <Analytics />
         </ThemeProvider>
       </body>
