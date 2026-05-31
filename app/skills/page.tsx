@@ -255,7 +255,8 @@ export default function SkillsPage() {
 						Skills & Technologies
 					</h2>
 					<p className="mt-4 text-zinc-600 dark:text-zinc-400">
-						Here are the technologies and tools I work with to bring ideas to life.
+						Here are the technologies and tools I work with to bring ideas to
+						life.
 					</p>
 				</div>
 				<div className="w-full h-px bg-zinc-300 dark:bg-zinc-800" />
