@@ -2,7 +2,7 @@ import "../global.css";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/theme-provider";
 
 export const metadata: Metadata = {
