@@ -102,7 +102,10 @@ const components = {
 	}: React.ImgHTMLAttributes<HTMLImageElement>) => (
 		// eslint-disable-next-line @next/next/no-img-element
 		<img
-			className={clsx("rounded-md border border-zinc-200 dark:border-zinc-800", className)}
+			className={clsx(
+				"rounded-md border border-zinc-200 dark:border-zinc-800",
+				className,
+			)}
 			alt={alt}
 			loading="lazy"
 			decoding="async"
@@ -110,7 +113,10 @@ const components = {
 		/>
 	),
 	hr: ({ ...props }) => (
-		<hr className="my-4 border-zinc-200 dark:border-zinc-800 md:my-8" {...props} />
+		<hr
+			className="my-4 border-zinc-200 dark:border-zinc-800 md:my-8"
+			{...props}
+		/>
 	),
 	table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
 		<div className="w-full my-6 overflow-y-auto">

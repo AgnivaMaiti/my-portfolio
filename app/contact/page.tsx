@@ -5,60 +5,60 @@ import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 
 const socials = [
-  {
-    icon: <Linkedin size={20} />,
-    href: "https://www.linkedin.com/in/agniva-maiti/",
-    label: "LinkedIn",
-    handle: "agniva-maiti",
-  },
-  {
-    icon: <Mail size={20} />,
-    href: "mailto:maitiagniva@gmail.com",
-    label: "Email",
-    handle: "maitiagniva@gmail.com",
-  },
-  {
-    icon: <Github size={20} />,
-    href: "https://github.com/AgnivaMaiti",
-    label: "Github",
-    handle: "AgnivaMaiti",
-  },
+	{
+		icon: <Linkedin size={20} />,
+		href: "https://www.linkedin.com/in/agniva-maiti/",
+		label: "LinkedIn",
+		handle: "agniva-maiti",
+	},
+	{
+		icon: <Mail size={20} />,
+		href: "mailto:maitiagniva@gmail.com",
+		label: "Email",
+		handle: "maitiagniva@gmail.com",
+	},
+	{
+		icon: <Github size={20} />,
+		href: "https://github.com/AgnivaMaiti",
+		label: "Github",
+		handle: "AgnivaMaiti",
+	},
 ];
 
 export default function Example() {
-  return (
-    <div className="bg-gradient-to-tl from-zinc-100/0 via-zinc-200 to-zinc-100/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 min-h-screen">
-      <Navigation />
-      <div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-        <section className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
-          {socials.map((s, index) => (
-            <Card key={index}>
-              <Link
-                href={s.href}
-                target="_blank"
-                aria-label={`Visit ${s.label}`}
-                className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24 lg:pb-48 md:p-16"
-              >
-                <span
-                  className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
-                  aria-hidden="true"
-                />
-                <span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white group-hover:bg-zinc-100 dark:group-hover:bg-zinc-900 border-zinc-300 dark:border-zinc-500 bg-white dark:bg-zinc-900 group-hover:border-zinc-400 dark:group-hover:border-zinc-200 drop-shadow-orange">
-                  {s.icon}
-                </span>
-                <div className="z-10 flex flex-col items-center">
-                  <span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white font-display">
-                    {s.handle}
-                  </span>
-                  <span className="mt-4 text-sm text-center duration-1000 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200">
-                    {s.label}
-                  </span>
-                </div>
-              </Link>
-            </Card>
-          ))}
-        </section>
-      </div>
-    </div>
-  );
+	return (
+		<div className="bg-gradient-to-tl from-zinc-100/0 via-zinc-200 to-zinc-100/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 min-h-screen">
+			<Navigation />
+			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
+				<section className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
+					{socials.map((s, index) => (
+						<Card key={index}>
+							<Link
+								href={s.href}
+								target="_blank"
+								aria-label={`Visit ${s.label}`}
+								className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24 lg:pb-48 md:p-16"
+							>
+								<span
+									className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
+									aria-hidden="true"
+								/>
+								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white group-hover:bg-zinc-100 dark:group-hover:bg-zinc-900 border-zinc-300 dark:border-zinc-500 bg-white dark:bg-zinc-900 group-hover:border-zinc-400 dark:group-hover:border-zinc-200 drop-shadow-orange">
+									{s.icon}
+								</span>
+								<div className="z-10 flex flex-col items-center">
+									<span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white font-display">
+										{s.handle}
+									</span>
+									<span className="mt-4 text-sm text-center duration-1000 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200">
+										{s.label}
+									</span>
+								</div>
+							</Link>
+						</Card>
+					))}
+				</section>
+			</div>
+		</div>
+	);
 }
