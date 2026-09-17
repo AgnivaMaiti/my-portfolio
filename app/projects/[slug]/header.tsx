@@ -3,6 +3,7 @@ import { ArrowLeft, Eye, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "../../components/theme-toggle";
+import { siteConfig } from "../../site";
 
 type Props = {
 	project: {
@@ -10,6 +11,7 @@ type Props = {
 		title: string;
 		description: string;
 		repository?: string;
+		video?: string;
 	};
 
 	views: number;
@@ -27,8 +29,14 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 	}
 	if (project.url) {
 		links.push({
-			label: "Website",
+			label: project.url.includes("pub.dev") ? "pub.dev" : "Live demo",
 			href: project.url,
+		});
+	}
+	if (project.video) {
+		links.push({
+			label: "Demo video",
+			href: project.video,
 		});
 	}
 	useEffect(() => {
@@ -62,17 +70,24 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 									views,
 								)}
 							</span>
-							<Link target="_blank" href="https://www.linkedin.com/in/agniva-maiti/">
+							<Link target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" href={siteConfig.linkedin}>
 								<Linkedin className="w-6 h-6 duration-200 hover:font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100" />
 							</Link>
-							<Link target="_blank" href="https://github.com/AgnivaMaiti">
+							<Link target="_blank" rel="noopener noreferrer" aria-label="GitHub" href={siteConfig.github}>
 								<Github className="w-6 h-6 duration-200 hover:font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100" />
+							</Link>
+							<Link
+								href="/contact"
+								className="hidden sm:inline px-3 py-1.5 text-sm font-medium rounded-md duration-200 bg-zinc-900 text-zinc-50 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
+							>
+								Hire me
 							</Link>
 							<ThemeToggle />
 						</div>
 
 						<Link
 							href="/projects"
+							aria-label="Back to projects"
 							className="duration-200 hover:font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100"
 						>
 							<ArrowLeft className="w-6 h-6 " />
@@ -93,7 +108,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 					<div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
 						<div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-zinc-800 dark:text-white sm:grid-cols-2 md:flex lg:gap-x-10">
 							{links.map((link) => (
-								<Link target="_blank" key={link.label} href={link.href}>
+								<Link target="_blank" rel="noopener noreferrer" key={link.label} href={link.href}>
 									{link.label} <span aria-hidden="true">&rarr;</span>
 								</Link>
 							))}

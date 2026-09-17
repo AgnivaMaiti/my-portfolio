@@ -44,7 +44,7 @@ const services = [
   },
 ];
 
-export default function Example() {
+export default function ContactPage() {
   return (
     <div className="bg-gradient-to-tl from-zinc-100/0 via-zinc-200 to-zinc-100/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 min-h-screen">
       <Navigation />

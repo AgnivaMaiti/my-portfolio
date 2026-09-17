@@ -15,7 +15,7 @@ const navigation = [
 export default function Home() {
   return (
     <div className="relative flex flex-col items-center justify-center w-full min-h-screen px-4 py-10 overflow-hidden bg-gradient-to-tl from-zinc-100 via-zinc-300/20 to-zinc-100 dark:from-black dark:via-zinc-600/20 dark:to-black">
-      <nav className="my-10 md:my-16 animate-fade-in" aria-label="Main">
+      <nav className="my-10 md:my-16 animate-fade-in-fast" aria-label="Main">
         <ul className="flex flex-wrap items-center justify-center gap-4">
           {navigation.map((item) => (
             <Link
@@ -38,7 +38,7 @@ export default function Home() {
       </h1>
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-500/50 dark:via-zinc-300/50 to-zinc-300/0" />
-      <div className="z-10 flex flex-col items-center my-10 md:my-16 text-center animate-fade-in">
+      <div className="z-10 flex flex-col items-center my-10 md:my-16 text-center animate-fade-in-fast">
         <p className="text-lg font-medium sm:text-xl text-zinc-800 dark:text-zinc-200">
           {siteConfig.role}
         </p>

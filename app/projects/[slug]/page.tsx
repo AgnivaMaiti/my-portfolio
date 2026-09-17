@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/app/components/mdx";
 import { Header } from "./header";
@@ -98,18 +99,34 @@ export default async function PostPage({ params }: Props) {
     }
   }
 
+  const pageUrl = `${siteConfig.url}/projects/${project.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: project.title,
-    description: project.description,
-    url: `${siteConfig.url}/projects/${project.slug}`,
-    author: {
-      "@type": "Person",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    datePublished: project.date,
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        name: project.title,
+        description: project.description,
+        url: pageUrl,
+        ...(project.repository && {
+          codeRepository: `https://github.com/${project.repository}`,
+        }),
+        author: {
+          "@type": "Person",
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+        datePublished: project.date,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+          { "@type": "ListItem", position: 2, name: "Projects", item: `${siteConfig.url}/projects` },
+          { "@type": "ListItem", position: 3, name: project.title, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
@@ -124,6 +141,31 @@ export default async function PostPage({ params }: Props) {
       <article className="px-4 py-12 mx-auto prose prose-zinc dark:prose-invert prose-quoteless">
         <Mdx code={project.body.code} />
       </article>
+
+      <aside className="max-w-[65ch] px-4 mx-auto">
+        <div className="p-6 border rounded-xl border-zinc-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40">
+          <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            Need something like this built?
+          </p>
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+            I&apos;m open to full-time roles, internships and freelance projects.
+          </p>
+          <div className="flex flex-col gap-3 mt-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-md duration-200 bg-zinc-900 text-zinc-50 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
+            >
+              Work with me
+            </Link>
+            <Link
+              href="/resume"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium border rounded-md duration-200 border-zinc-400 text-zinc-800 hover:border-zinc-900 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-300"
+            >
+              View resume
+            </Link>
+          </div>
+        </div>
+      </aside>
 
       {relatedProjects.length > 0 && (
         <div className="bg-zinc-100 dark:bg-black w-full py-12 pb-24 mt-12 border-t border-zinc-300 dark:border-zinc-800">

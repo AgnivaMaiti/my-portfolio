@@ -62,15 +62,20 @@ const components = {
 			{...props}
 		/>
 	),
-	a: ({ className, ...props }) => (
-		<Link
-			className={clsx(
-				"font-medium text-zinc-900 dark:text-zinc-100 underline underline-offset-4",
-				className,
-			)}
-			{...props}
-		/>
-	),
+	a: ({ className, href, ...props }) => {
+		const external = typeof href === "string" && /^https?:\/\//.test(href);
+		return (
+			<Link
+				href={href}
+				className={clsx(
+					"font-medium text-zinc-900 dark:text-zinc-100 underline underline-offset-4",
+					className,
+				)}
+				{...(external && { target: "_blank", rel: "noopener noreferrer" })}
+				{...props}
+			/>
+		);
+	},
 	p: ({ className, ...props }) => (
 		<p
 			className={clsx("leading-7 [&:not(:first-child)]:mt-6", className)}

@@ -164,7 +164,8 @@ const resumeData = {
     {
       name: "Satellite Image Landscape Classifier",
       description: "Image classification system designed to identify and label 6 different landscape categories in satellite images",
-      technologies: ["Python", "Computer Vision", "Deep Learning"]
+      technologies: ["Python", "Computer Vision", "Deep Learning"],
+      github: "https://github.com/AgnivaMaiti/Satellite-Image-Landscape-Classifier"
     },
     {
       name: "Geeti - AI Lyrics Generator",
@@ -237,7 +238,7 @@ export default function ResumePage() {
           <Link
             href="/resume.pdf"
             download="Agniva_Maiti_Resume.pdf"
-            className="inline-flex items-center gap-2 mt-6 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 px-6 py-3 rounded-md transition-colors font-medium"
+            className="inline-flex items-center gap-2 mt-6 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 px-6 py-3 rounded-md transition-colors font-medium"
           >
             <Download className="w-5 h-5" />
             Download PDF
@@ -273,15 +274,15 @@ export default function ResumePage() {
                   <MapPin className="w-4 h-4" />
                   <span>{resumeData.personalInfo.location}</span>
                 </div>
-                <Link href={resumeData.personalInfo.linkedin} target="_blank" className="flex items-center gap-2 hover:text-zinc-800 dark:text-zinc-200">
+                <Link href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-zinc-200">
                   <Linkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </Link>
-                <Link href={resumeData.personalInfo.github} target="_blank" className="flex items-center gap-2 hover:text-zinc-800 dark:text-zinc-200">
+                <Link href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-zinc-200">
                   <Github className="w-4 h-4" />
                   <span>GitHub</span>
                 </Link>
-                <Link href={resumeData.personalInfo.website} target="_blank" className="flex items-center gap-2 hover:text-zinc-800 dark:text-zinc-200">
+                <Link href={resumeData.personalInfo.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-zinc-900 dark:hover:text-zinc-200">
                   <Globe className="w-4 h-4" />
                   <span>Portfolio</span>
                 </Link>
@@ -301,12 +302,12 @@ export default function ResumePage() {
             <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">Education</h3>
             {resumeData.education.map((edu, index) => (
               <div key={index} className="mb-6 last:mb-0">
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex flex-col gap-1 sm:flex-row sm:justify-between items-start mb-2">
                   <div>
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">{edu.degree}</h4>
                     <p className="text-zinc-600 dark:text-zinc-400">{edu.institution} • {edu.location}</p>
                   </div>
-                  <div className="text-right">
+                  <div className="sm:text-right">
                     <p className="text-zinc-700 dark:text-zinc-300">{edu.duration}</p>
                     <p className="text-zinc-600 dark:text-zinc-400">{edu.gpa}</p>
                   </div>
@@ -334,7 +335,7 @@ export default function ResumePage() {
             <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">Internships & Experience</h3>
             {resumeData.experience.map((exp, index) => (
               <div key={index} className="mb-8 last:mb-0">
-                <div className="flex justify-between items-start mb-3">
+                <div className="flex flex-col gap-1 sm:flex-row sm:justify-between items-start mb-3">
                   <div>
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">{exp.title}</h4>
                     <p className="text-zinc-600 dark:text-zinc-400">{exp.company} • {exp.location}</p>
@@ -360,7 +361,7 @@ export default function ResumePage() {
             <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">Leadership & Volunteering</h3>
             {resumeData.leadership.map((leadership, index) => (
               <div key={index} className="mb-8 last:mb-0">
-                <div className="flex justify-between items-start mb-3">
+                <div className="flex flex-col gap-1 sm:flex-row sm:justify-between items-start mb-3">
                   <div>
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">{leadership.title}</h4>
                     <p className="text-zinc-600 dark:text-zinc-400">{leadership.organization}</p>
@@ -387,10 +388,10 @@ export default function ResumePage() {
             <div className="space-y-6">
               {resumeData.projects.map((project, index) => (
                 <div key={index} className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4">
-                  <div className="flex justify-between items-start mb-2">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:justify-between items-start mb-2">
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">{project.name}</h4>
                     {project.github && (
-                      <Link href={project.github} target="_blank" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200">
+                      <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`} className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
                         <ExternalLink className="w-4 h-4" />
                       </Link>
                     )}
