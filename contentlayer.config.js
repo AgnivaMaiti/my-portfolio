@@ -34,6 +34,11 @@ export const Project = defineDocumentType(() => ({
         video: {
             type: "string",
         },
+        tags: {
+            type: "list",
+            of: { type: "string" },
+            default: [],
+        },
     },
     computedFields: {
         slug: {

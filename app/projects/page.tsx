@@ -7,6 +7,7 @@ import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 import { Metadata } from "next";
+import { categories } from "./categories";
 
 const redis = Redis.fromEnv();
 
@@ -19,7 +20,13 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default async function ProjectsPage() {
+type Props = {
+  searchParams?: { category?: string };
+};
+
+export default async function ProjectsPage({ searchParams }: Props) {
+  const category = categories.find((c) => c.key === searchParams?.category)?.key;
+
   let views: Record<string, number> = {};
   try {
     if (allProjects.length > 0) {
@@ -58,11 +65,12 @@ export default async function ProjectsPage() {
                featured;
   
   const sorted = publishedProjects
-    .filter(
-      (project: Project) =>
-        project.slug !== featured?.slug &&
-        project.slug !== top2?.slug &&
-        project.slug !== top3?.slug,
+    .filter((project: Project) =>
+      category
+        ? project.tags?.includes(category)
+        : project.slug !== featured?.slug &&
+          project.slug !== top2?.slug &&
+          project.slug !== top3?.slug,
     )
     .sort(
       (a: Project, b: Project) =>
@@ -81,9 +89,33 @@ export default async function ProjectsPage() {
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
             Some of the projects are from work and some are on my own time.
           </p>
+          <nav aria-label="Filter projects by category" className="flex flex-wrap gap-2 mt-6">
+            {[{ key: undefined, label: "All" }, ...categories].map((c) => {
+              const active = c.key === category;
+              const count = c.key
+                ? publishedProjects.filter((p) => p.tags?.includes(c.key)).length
+                : publishedProjects.length;
+              return (
+                <Link
+                  key={c.label}
+                  href={c.key ? `/projects?category=${c.key}` : "/projects"}
+                  aria-current={active ? "page" : undefined}
+                  className={`px-3 py-1.5 text-sm rounded-full border duration-200 ${
+                    active
+                      ? "bg-zinc-900 text-zinc-50 border-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:border-zinc-100"
+                      : "border-zinc-300 text-zinc-700 hover:border-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-300"
+                  }`}
+                >
+                  {c.label} <span className="opacity-60">({count})</span>
+                </Link>
+              );
+            })}
+          </nav>
         </div>
         <div className="w-full h-px bg-zinc-300 dark:bg-zinc-800" />
 
+        {!category && (
+        <>
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           <Card>
             <Link href={`/projects/${featured.slug}`}>
@@ -135,6 +167,8 @@ export default async function ProjectsPage() {
           </div>
         </div>
         <div className="hidden w-full h-px md:block bg-zinc-300 dark:bg-zinc-800" />
+        </>
+        )}
 
         <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
           <div className="grid grid-cols-1 gap-4">

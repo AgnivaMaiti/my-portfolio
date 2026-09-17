@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Agniva Maiti — Computer Science student with a focus on AI/ML and Android development, open to jobs and freelance work.",
+    "About Agniva Maiti — Computer Science graduate (B.Tech CSE, KIIT 2026) focused on AI/ML and Android development, open to jobs and freelance work.",
   alternates: { canonical: "/about" },
 };
 

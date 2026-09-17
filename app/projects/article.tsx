@@ -1,13 +1,16 @@
 import type { Project } from "@/.contentlayer/generated";
 import Link from "next/link";
-import { Eye, View } from "lucide-react";
+import { Eye } from "lucide-react";
+import { categoryLabel } from "./categories";
 
 type Props = {
 	project: Project;
-	views: number;
+	views?: number;
+	headingLevel?: "h2" | "h3";
 };
 
-export const Article: React.FC<Props> = ({ project, views }) => {
+export const Article: React.FC<Props> = ({ project, views, headingLevel = "h2" }) => {
+	const Heading = headingLevel;
 	return (
 		<Link href={`/projects/${project.slug}`}>
 			<article className="p-4 md:p-8">
@@ -15,7 +18,7 @@ export const Article: React.FC<Props> = ({ project, views }) => {
 					<span className="text-xs duration-1000 text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white group-hover:border-zinc-800 dark:group-hover:border-zinc-200 drop-shadow-orange">
 						{project.date ? (
 							<time dateTime={new Date(project.date).toISOString()}>
-								{Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(
+								{Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(
 									new Date(project.date),
 								)}
 							</time>
@@ -23,17 +26,31 @@ export const Article: React.FC<Props> = ({ project, views }) => {
 							<span>SOON</span>
 						)}
 					</span>
-					<span className="text-zinc-500 text-xs  flex items-center gap-1">
-						<Eye className="w-4 h-4" />{" "}
-						{Intl.NumberFormat("en-US", { notation: "compact" }).format(views)}
-					</span>
+					{views !== undefined && (
+						<span className="text-zinc-500 text-xs  flex items-center gap-1">
+							<Eye className="w-4 h-4" />{" "}
+							{Intl.NumberFormat("en-US", { notation: "compact" }).format(views)}
+						</span>
+					)}
 				</div>
-				<h2 className="z-20 text-xl font-medium duration-1000 lg:text-3xl text-zinc-900 dark:text-zinc-200 group-hover:text-zinc-950 dark:group-hover:text-white font-display">
+				<Heading className="z-20 text-xl font-medium duration-1000 lg:text-3xl text-zinc-900 dark:text-zinc-200 group-hover:text-zinc-950 dark:group-hover:text-white font-display">
 					{project.title}
-				</h2>
+				</Heading>
 				<p className="z-20 mt-4 text-sm  duration-1000 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200">
 					{project.description}
 				</p>
+				{project.tags && project.tags.length > 0 && (
+					<ul className="flex flex-wrap gap-2 mt-4" aria-label="Categories">
+						{project.tags.map((tag) => (
+							<li
+								key={tag}
+								className="px-2 py-0.5 text-xs rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400"
+							>
+								{categoryLabel(tag)}
+							</li>
+						))}
+					</ul>
+				)}
 			</article>
 		</Link>
 	);

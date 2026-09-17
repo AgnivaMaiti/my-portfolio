@@ -19,13 +19,13 @@ export default function AboutPage() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Nomoskar! I'm Agniva Maiti</h1>
-                <p className="text-zinc-600 dark:text-zinc-400 text-lg">Computer Science Student & Developer</p>
+                <p className="text-zinc-600 dark:text-zinc-400 text-lg">Computer Science Graduate & Developer</p>
               </div>
             </div>
             
             <div className="space-y-6 text-zinc-700 dark:text-zinc-300 leading-relaxed text-lg">
               <p>
-                I'm a passionate Computer Science student with a deep fascination for 
+                I'm a passionate Computer Science graduate (B.Tech CSE, KIIT, 2026, CGPA 8.72/10) with a deep fascination for
                 AI/ML and Android development. My journey in technology began with curiosity 
                 about how things work, and it has evolved into a love for creating solutions 
                 that make a difference.

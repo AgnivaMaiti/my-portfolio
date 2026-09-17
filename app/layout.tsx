@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
 import { siteConfig } from "./site";
+import { Footer } from "./components/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -54,33 +55,70 @@ export const metadata: Metadata = {
 };
 
 // Structured data so search engines understand who the site is about.
-const personJsonLd = {
+const personId = `${siteConfig.url}/#person`;
+const siteJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  email: `mailto:${siteConfig.email}`,
-  jobTitle: siteConfig.role,
-  description: siteConfig.description,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Bhubaneswar",
-    addressCountry: "IN",
-  },
-  affiliation: {
-    "@type": "CollegeOrUniversity",
-    name: "Kalinga Institute of Industrial Technology (KIIT)",
-  },
-  knowsAbout: [
-    "Machine Learning",
-    "Artificial Intelligence",
-    "Natural Language Processing",
-    "Computer Vision",
-    "Android Development",
-    "Flutter",
-    "Web Development",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: siteConfig.name,
+      givenName: "Agniva",
+      familyName: "Maiti",
+      url: siteConfig.url,
+      image: `${siteConfig.url}/opengraph-image`,
+      email: `mailto:${siteConfig.email}`,
+      jobTitle: siteConfig.role,
+      description: siteConfig.description,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bhubaneswar",
+        addressCountry: "IN",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: siteConfig.education.school,
+        url: siteConfig.education.schoolUrl,
+      },
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "degree",
+        name: siteConfig.education.degree,
+        recognizedBy: {
+          "@type": "CollegeOrUniversity",
+          name: siteConfig.education.school,
+        },
+      },
+      knowsLanguage: ["English", "Hindi", "Bengali", "Nagamese", "Assamese"],
+      knowsAbout: [
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Natural Language Processing",
+        "Computer Vision",
+        "Android Development",
+        "Flutter",
+        "Web Development",
+      ],
+      sameAs: [siteConfig.linkedin, siteConfig.github],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: "en",
+      publisher: { "@id": personId },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${siteConfig.url}/#profilepage`,
+      url: siteConfig.url,
+      name: siteConfig.title,
+      isPartOf: { "@id": `${siteConfig.url}/#website` },
+      mainEntity: { "@id": personId },
+    },
   ],
-  sameAs: [siteConfig.linkedin, siteConfig.github],
 };
 
 const inter = Inter({
@@ -104,7 +142,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title={`${siteConfig.name} — Projects`} href="/rss.xml" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
       </head>
       <body
@@ -113,6 +151,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
+          <Footer />
           <div className="fixed bottom-6 right-6 z-50">
             <ThemeToggle />
           </div>
