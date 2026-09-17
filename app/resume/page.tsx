@@ -13,7 +13,7 @@ const resumeData = {
     location: "Bhubaneswar, India",
     linkedin: "https://www.linkedin.com/in/agniva-maiti/",
     github: "https://github.com/AgnivaMaiti",
-    website: "https://www.agniva.tech",
+    website: "https://www.agniva.in",
     summary: "Passionate Computer Science student with extensive experience in AI/ML research, app development, and technical leadership. Proven track record of contributing to research projects at prestigious institutions and developing innovative solutions for real-world problems."
   },
   
@@ -232,7 +232,7 @@ export default function ResumePage() {
             Resume
           </h1>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Download my resume or view it below.
+            Download my resume or view it below. Open to full-time roles, internships and freelance projects.
           </p>
           <Link
             href="/resume.pdf"
@@ -241,6 +241,13 @@ export default function ResumePage() {
           >
             <Download className="w-5 h-5" />
             Download PDF
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 mt-6 ml-3 border border-zinc-400 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-zinc-300 text-zinc-900 dark:text-zinc-100 px-6 py-3 rounded-md transition-colors font-medium"
+          >
+            <Mail className="w-5 h-5" />
+            Hire me
           </Link>
         </div>
 

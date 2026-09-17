@@ -1,24 +1,25 @@
 import { allProjects } from "contentlayer/generated";
 import { Feed } from "feed";
+import { siteConfig } from "../site";
 
 export async function GET() {
-  const site_url = "https://agniva.tech";
-  
+  const site_url = siteConfig.url;
+
   const feed = new Feed({
-    title: "Agniva - Projects",
-    description: "Computer Science student, AI-ML and Android dev enthusiast",
+    title: `${siteConfig.name} - Projects`,
+    description: siteConfig.description,
     id: site_url,
     link: site_url,
     language: "en",
-    image: `${site_url}/og.png`,
+    image: `${site_url}/opengraph-image`,
     favicon: `${site_url}/favicon.png`,
-    copyright: `All rights reserved ${new Date().getFullYear()}, Agniva`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, ${siteConfig.name}`,
     feedLinks: {
       rss2: `${site_url}/rss.xml`,
     },
     author: {
-      name: "Agniva",
-      email: "contact@agniva.tech",
+      name: siteConfig.name,
+      email: siteConfig.email,
       link: site_url,
     },
   });

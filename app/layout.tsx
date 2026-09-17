@@ -5,28 +5,30 @@ import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
+import { siteConfig } from "./site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "agniva.tech",
-    template: "%s | agniva.tech",
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "Computer Science student, AI-ML and Android dev enthusiast",
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "agniva.tech",
-    description:
-      "Computer Science student, AI-ML and Android dev enthusiast",
-    url: "https://agniva.tech",
-    siteName: "agniva.tech",
-    images: [
-      {
-        url: "https://agniva.tech/og.png",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "en_US",
+    type: "profile",
+    firstName: "Agniva",
+    lastName: "Maiti",
   },
   robots: {
     index: true,
@@ -39,15 +41,48 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   twitter: {
-    title: "Agniva",
     card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
   },
   icons: {
+    icon: "/favicon.png",
     shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
+
+// Structured data so search engines understand who the site is about.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  email: `mailto:${siteConfig.email}`,
+  jobTitle: siteConfig.role,
+  description: siteConfig.description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bhubaneswar",
+    addressCountry: "IN",
+  },
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: "Kalinga Institute of Industrial Technology (KIIT)",
+  },
+  knowsAbout: [
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Natural Language Processing",
+    "Computer Vision",
+    "Android Development",
+    "Flutter",
+    "Web Development",
+  ],
+  sameAs: [siteConfig.linkedin, siteConfig.github],
+};
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -66,6 +101,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={[inter.variable, calSans.variable].join(" ")} suppressHydrationWarning>
       <head>
+        <link rel="alternate" type="application/rss+xml" title={`${siteConfig.name} — Projects`} href="/rss.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </head>
       <body
         className={`bg-white dark:bg-black text-zinc-900 dark:text-zinc-50 ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined

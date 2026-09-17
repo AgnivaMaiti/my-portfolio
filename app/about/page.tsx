@@ -1,6 +1,8 @@
 "use client";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
+import Link from "next/link";
+import { FileText, Mail } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -16,7 +18,7 @@ export default function AboutPage() {
                 <span className="text-xl font-bold text-zinc-900">AM</span>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Nomoskar! I'm Agniva Maiti</h2>
+                <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Nomoskar! I'm Agniva Maiti</h1>
                 <p className="text-zinc-600 dark:text-zinc-400 text-lg">Computer Science Student & Developer</p>
               </div>
             </div>
@@ -45,6 +47,29 @@ export default function AboutPage() {
                 I'm always open to opportunities where I can learn, contribute, and grow—so if you're 
                 working on something interesting, or just want to chat about the latest tech, I'd love to connect!
               </p>
+            </div>
+
+            <div className="relative z-10 flex flex-col gap-3 mt-10 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-md duration-200 bg-zinc-900 text-zinc-50 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
+              >
+                <Mail className="w-4 h-4" />
+                Hire me / Work with me
+              </Link>
+              <Link
+                href="/resume"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium border rounded-md duration-200 border-zinc-400 text-zinc-800 hover:border-zinc-900 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-300"
+              >
+                <FileText className="w-4 h-4" />
+                View resume
+              </Link>
+              <Link
+                href="/projects"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium duration-200 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+              >
+                See my projects &rarr;
+              </Link>
             </div>
           </div>
         </Card>

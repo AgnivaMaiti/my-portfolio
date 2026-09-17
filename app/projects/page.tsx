@@ -6,8 +6,16 @@ import { Card } from "../components/card";
 import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
+import { Metadata } from "next";
 
 const redis = Redis.fromEnv();
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "AI/ML, NLP, computer vision, Android/Flutter and web projects built by Agniva Maiti.",
+  alternates: { canonical: "/projects" },
+};
 
 export const revalidate = 60;
 
@@ -28,8 +36,6 @@ export default async function ProjectsPage() {
     console.error("Failed to fetch views from Redis:", e);
   }
 
-  console.log('Available projects:', allProjects.map((p: Project) => ({ slug: p.slug, published: p.published })));
-  
   // Get only published projects for selection
   const publishedProjects = allProjects.filter((p: Project) => p.published);
   
@@ -69,9 +75,9 @@ export default async function ProjectsPage() {
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         <div className="max-w-2xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
             Projects
-          </h2>
+          </h1>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
             Some of the projects are from work and some are on my own time.
           </p>

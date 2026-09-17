@@ -8,6 +8,7 @@ import { Redis } from "@upstash/redis";
 import { Metadata } from "next";
 import { Card } from "@/app/components/card";
 import { Article } from "../article";
+import { siteConfig } from "@/app/site";
 
 const redis = Redis.fromEnv();
 
@@ -35,22 +36,23 @@ export async function generateMetadata({
 
   const title = project.title;
   const description = project.description;
-  const ogImage = `https://agniva.tech/og.png`;
+  const url = `/projects/${project.slug}`;
+  const ogImage = "/opengraph-image";
 
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title,
       description,
       type: "article",
       publishedTime: project.date,
-      url: `https://agniva.tech/projects/${project.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      authors: [siteConfig.name],
+      url,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
@@ -101,9 +103,11 @@ export default async function PostPage({ params }: Props) {
     "@type": "Article",
     headline: project.title,
     description: project.description,
+    url: `${siteConfig.url}/projects/${project.slug}`,
     author: {
       "@type": "Person",
-      name: "Agniva",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
     datePublished: project.date,
   };
