@@ -96,7 +96,7 @@ export const policies: Policy[] = [
   {
     slug: "wikitionary-app",
     app: "Wikitionary App",
-    packageId: "io.github.wiktionarylite.wiktionary_lite",
+    packageId: "com.spontaneum.wikitionary",
     service: "Wiktionary and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
@@ -130,7 +130,7 @@ export const policies: Policy[] = [
   {
     slug: "wikivoyager-app",
     app: "WikiVoyager App",
-    packageId: "io.github.unofficial.wikivoyage_app",
+    packageId: "com.spontaneum.wikivoyager",
     service: "Wikivoyage and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
@@ -175,7 +175,7 @@ export const policies: Policy[] = [
   {
     slug: "wikiquotes-app",
     app: "WikiQuotes App",
-    packageId: "dev.unofficial.wikiquote_unofficial",
+    packageId: "com.spontaneum.wikiquotes",
     service: "Wikiquote and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
@@ -208,7 +208,7 @@ export const policies: Policy[] = [
   {
     slug: "biorxiv-reader",
     app: "BioRxiv Reader",
-    packageId: "dev.unofficial.biorxiv_reader",
+    packageId: "com.spontaneum.biorxiv",
     service: "biorxiv.org and the public bioRxiv API",
     serviceOwner: "bioRxiv and Cold Spring Harbor Laboratory",
     servicePrivacyUrl: "https://www.biorxiv.org/content/privacy-statement",
