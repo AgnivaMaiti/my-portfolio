@@ -100,7 +100,7 @@ export const policies: Policy[] = [
     service: "Wiktionary and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
-    updated: "19 September 2026",
+    updated: "9 October 2026",
     intro: [
       "Wikitionary App is an unofficial, independent reader for Wiktionary. It is not affiliated with, endorsed by, or supported by the Wikimedia Foundation.",
       "The short version: the app collects nothing about you, has no account, no ads and no analytics, and the only network requests it makes are to Wikimedia to fetch the dictionary content you asked for.",
@@ -112,13 +112,13 @@ export const policies: Policy[] = [
         serviceOwner: "The Wikimedia Foundation",
         servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
         storedItems:
-          "your saved words, reading history, preferred language and display settings",
+          "your saved words (with their offline definitions, any notes you add and your review progress), reading history, preferred language and display settings",
       }),
       {
         heading: "Text you look up from other apps",
         body: [
           'The app can receive text when you select it elsewhere and choose "Look up in Wiktionary", or when you share text to it.',
-          "That text is used for one thing: to run the lookup you asked for. It is sent to Wiktionary as a search term and is not stored separately or sent anywhere else.",
+          "That text is used for one thing: to run the lookup you asked for. It is sent to Wiktionary (as a search term, or to its public definition API for a quick definition) and is not stored separately or sent anywhere else.",
         ],
       },
       {
