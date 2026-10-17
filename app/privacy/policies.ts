@@ -238,6 +238,87 @@ export const policies: Policy[] = [
       },
     ],
   },
+  {
+    slug: "texleaf",
+    app: "TeXLeaf",
+    packageId: "com.mynimalistic.texleaf",
+    service: "overleaf.com",
+    serviceOwner: "Overleaf (Digital Science UK Limited)",
+    servicePrivacyUrl: "https://www.overleaf.com/legal",
+    updated: "17 October 2026",
+    intro: [
+      "TeXLeaf is an unofficial, independent Android client for Overleaf. It is not affiliated with, endorsed by, or supported by Overleaf or Digital Science UK Limited.",
+      "The short version: TeXLeaf has no servers, no ads and no analytics. When you log in and edit, your log-in details and documents go directly from your phone to Overleaf, as they would in a browser. They never pass through anything I run, and I never see them.",
+    ],
+    sections: [
+      {
+        heading: "Your Overleaf account and documents",
+        body: [
+          "To use your projects you log in to Overleaf inside the app, with your Overleaf email and password, ORCID or your institution. The log-in page, the editor, the compiler and your files are all served by overleaf.com.",
+          "Everything you type or upload there (your email address, name, LaTeX projects, files, comments and chat with collaborators) is sent to Overleaf over an encrypted (HTTPS) connection and handled by Overleaf under its own privacy policy and terms (https://www.overleaf.com/legal).",
+          "TeXLeaf does not read, copy, store or forward your password or your documents. I run no server, so there is nowhere for them to go.",
+        ],
+      },
+      {
+        heading: "What stays on your device",
+        body: [
+          "TeXLeaf stores your recent-projects list (each project's Overleaf ID and name) and your settings, such as whether the LaTeX symbol bar is on, in the app's private storage on your phone. None of it is uploaded or shared.",
+          "Overleaf's own session cookie and site storage are kept in the app's private web view storage, as a browser would keep them. That is what keeps you logged in.",
+          "You can clear the recent list in the app. Clearing the app's data or uninstalling it removes everything, including the Overleaf session.",
+        ],
+      },
+      {
+        heading: "Downloads and uploads",
+        body: [
+          "When you download a compiled PDF or a project .zip, the app asks Android's download manager to fetch it from Overleaf using your Overleaf session, and saves it to your phone's Downloads folder (Downloads/TeXLeaf).",
+          "When you upload a file to a project, you pick it with Android's file picker, and it is sent only to Overleaf.",
+        ],
+      },
+      {
+        heading: "What I do not do",
+        bullets: [
+          "No TeXLeaf account. The only account involved is your own Overleaf account.",
+          "No advertising, and no advertising identifier is read.",
+          "No analytics or crash-reporting SDK is bundled in the app.",
+          "No behavioural tracking, and no selling or sharing of personal information.",
+          "No data is transmitted to me or to any server I control. I run no server.",
+        ],
+      },
+      {
+        heading: "Links to other sites",
+        body: [
+          "Links that lead away from Overleaf open in your normal browser, not silently inside the app, except log-in pages for ORCID or your institution, which stay in the app so the log-in can complete.",
+        ],
+      },
+      {
+        heading: "Deleting your data",
+        body: [
+          "Data held by TeXLeaf: clear the recent list in the app, or clear the app's data in Android settings, or uninstall the app.",
+          "Data held by Overleaf: delete your Overleaf account (or individual projects) at https://www.overleaf.com/user/settings, or contact Overleaf as described in its privacy policy. I cannot access or delete Overleaf accounts.",
+        ],
+      },
+      {
+        heading: "Children",
+        body: [
+          "This app is not directed at children under 13. Overleaf's own terms set its minimum age.",
+        ],
+      },
+      {
+        heading: "Permissions",
+        bullets: ["Internet access, to reach overleaf.com. That is the only permission the app declares."],
+      },
+      {
+        heading: "Changes",
+        body: [
+          "If this policy changes, the date at the top of this page changes with it. Material changes will also be noted in the app's release notes.",
+        ],
+      },
+      {
+        heading: "Contact",
+        body: ["Questions about this policy can go to maitiagniva@gmail.com."],
+      },
+    ],
+  },
 ];
 
 export const getPolicy = (slug: string): Policy | undefined =>
