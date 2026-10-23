@@ -14,7 +14,7 @@ export function Footer() {
             {siteConfig.role} · {siteConfig.location}
           </p>
           <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-400">
-            Open to full-time roles, internships &amp; freelance projects
+            {siteConfig.availability}
           </p>
         </div>
 

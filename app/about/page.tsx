@@ -19,16 +19,19 @@ export default function AboutPage() {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Nomoskar! I'm Agniva Maiti</h1>
-                <p className="text-zinc-600 dark:text-zinc-400 text-lg">Computer Science Graduate & Developer</p>
+                <p className="text-zinc-600 dark:text-zinc-400 text-lg">ML Engineer &amp; NLP Researcher</p>
               </div>
             </div>
             
             <div className="space-y-6 text-zinc-700 dark:text-zinc-300 leading-relaxed text-lg">
               <p>
-                I'm a passionate Computer Science graduate (B.Tech CSE, KIIT, 2026, CGPA 8.72/10) with a deep fascination for
-                AI/ML and Android development. My journey in technology began with curiosity 
-                about how things work, and it has evolved into a love for creating solutions 
-                that make a difference.
+                I'm a Computer Science graduate (B.Tech CSE, KIIT, 2026, CGPA 8.72/10) who works where machine
+                learning meets shipped software. On the research side, I co-authored an EMNLP 2025 paper on LLM
+                teaching agents, wrote two WMT 2026 papers on English–Nagamese and English–Kokborok translation,
+                presented two posters at GlobalSouthML at ICML 2026, and built NagaNLP,
+                an open toolkit for the low-resource Nagamese language. On the product side, my Flutter app GScholar
+                has 100,000+ downloads on Google Play, and NagaTranslate brings retrieval-grounded LLM translation to
+                Naga languages.
               </p>
               
               <p>
@@ -38,14 +41,17 @@ export default function AboutPage() {
               </p>
               
               <p>
-                I'm still learning and growing every day, and I find joy in exploring new technologies, 
-                contributing to projects, and collaborating with others who share the same enthusiasm. 
-                I'm especially drawn to spaces where I can both contribute and learn.
+                Before graduating I did research internships at IIT Kharagpur (search-engine bias with small
+                language models) and IIT (ISM) Dhanbad (low-light image enhancement), built production ML inference
+                pipelines at RnPsoft, and shipped an offline-ML Flutter app for the Agrovigya rural-employment initiative.
+                Since graduating I&apos;ve done freelance speech recognition work, fine-tuning and benchmarking ASR models
+                for Yiddish and Hebrew, and reviewed papers for the NeurIPS 2026 GlobalSouthAI workshop.
               </p>
               
               <p>
-                I'm always open to opportunities where I can learn, contribute, and grow—so if you're 
-                working on something interesting, or just want to chat about the latest tech, I'd love to connect!
+                I&apos;m looking for full-time roles as a software, ML or AI engineer, and research positions in NLP.
+                I&apos;m open to relocating and to remote work. If you&apos;re working on something interesting,
+                especially language technology for languages that don&apos;t have much data yet, I&apos;d love to talk.
               </p>
             </div>
 

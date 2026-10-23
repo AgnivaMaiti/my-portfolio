@@ -1,0 +1,34 @@
+---
+title: NagaNLP
+description: An open NLP toolkit for Nagamese Creole. A 10K-pair conversational corpus built with human-in-the-loop synthetic data, POS and NER models, and NagaLLaMA, a fine-tuned Llama-3.2-3B.
+url: https://arxiv.org/abs/2512.12537
+date: 2025-12-14
+tags: [ai]
+published: true
+---
+
+Nagamese is the lingua franca of Nagaland, yet it has almost no NLP resources: no large corpora, no standard benchmarks and no language models. NagaNLP is my attempt to change that. It is a paper on arXiv ([2512.12537](https://arxiv.org/abs/2512.12537)), and its datasets and models are released on [Hugging Face](https://huggingface.co/collections/agnivamaiti/naganlp-project).
+
+**Paper:** *NagaNLP: Bootstrapping NLP for Low-Resource Nagamese Creole with Human-in-the-Loop Synthetic Data.* Agniva Maiti, Manya Pandey, Murari Mandal.
+
+## Method
+
+1. An LLM (Gemini), guided by expert prompts, generates a candidate Nagamese corpus.
+2. Native speakers correct and annotate it. Inter-annotator agreement (Cohen's κ) is 0.92 for POS and 0.88 for NER.
+3. The result is a **10,018-pair conversational dataset** plus POS-tagged and NER-annotated corpora.
+
+## Results (as reported in the paper)
+
+| Task | Model | Result |
+|---|---|---|
+| Part-of-speech tagging | XLM-RoBERTa-base, fine-tuned | 93.81% accuracy (0.90 macro-F1) |
+| Named entity recognition | XLM-RoBERTa-base, fine-tuned | 0.75 macro-F1 |
+| Conversation | NagaLLaMA (Llama-3.2-3B Instruct, LoRA) | perplexity 3.85 vs 96.76 few-shot |
+
+## Stack
+
+Python, PyTorch, Hugging Face Transformers, LoRA fine-tuning, human annotation guidelines and agreement analysis.
+
+## Why it matters
+
+The pipeline is meant to be reusable for any language that has speakers but no corpora: a model drafts the data and people check it. The same work powers [NagaTranslate](/projects/NagaTranslate).

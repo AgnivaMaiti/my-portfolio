@@ -18,7 +18,7 @@ export default function ResumePage() {
             Resume
           </h1>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            Download my resume or view it below. Open to full-time roles, internships and freelance projects.
+            Download my resume or view it below. Open to full-time software, ML and research roles, and freelance projects.
           </p>
           <Link
             href="/resume.pdf"
@@ -78,6 +78,26 @@ export default function ResumePage() {
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-3">Summary</h3>
               <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">{resumeData.personalInfo.summary}</p>
             </div>
+          </div>
+        </Card>
+
+        {/* Publications */}
+        <Card>
+          <div className="p-8">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">Publications</h3>
+            <ol className="space-y-6">
+              {resumeData.publications.map((pub) => (
+                <li key={pub.url} className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4">
+                  <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">{pub.venue}</p>
+                  <Link href={pub.url} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-start gap-1.5 text-lg font-semibold text-zinc-800 dark:text-zinc-200 hover:text-zinc-950 dark:hover:text-white">
+                    {pub.title}
+                    <ExternalLink className="w-4 h-4 mt-1.5 shrink-0" />
+                  </Link>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{pub.authors}</p>
+                  <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">{pub.summary}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </Card>
 
@@ -169,14 +189,14 @@ export default function ResumePage() {
         {/* Projects */}
         <Card>
           <div className="p-8">
-            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">Sample Projects</h3>
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">Selected Projects</h3>
             <div className="space-y-6">
               {resumeData.projects.map((project, index) => (
                 <div key={index} className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4">
                   <div className="flex flex-col gap-1 sm:flex-row sm:justify-between items-start mb-2">
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">{project.name}</h4>
-                    {project.github && (
-                      <Link href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`} className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
+                    {project.link && (
+                      <Link href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name}`} className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200">
                         <ExternalLink className="w-4 h-4" />
                       </Link>
                     )}

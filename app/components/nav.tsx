@@ -39,7 +39,8 @@ export const Navigation: React.FC = () => {
 				<div className="container flex items-center justify-between gap-4 p-4 mx-auto sm:p-6">
 					<Link
 						href="/"
-						className="font-semibold font-display duration-200 text-zinc-800 hover:text-zinc-950 dark:text-zinc-200 dark:hover:text-white"
+						translate="no"
+						className="notranslate font-semibold font-display duration-200 text-zinc-800 hover:text-zinc-950 dark:text-zinc-200 dark:hover:text-white"
 					>
 						{siteConfig.name}
 					</Link>

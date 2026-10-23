@@ -9,8 +9,8 @@ const services = [
   },
   {
     icon: <BrainCircuit size={20} />,
-    title: "AI/ML solutions",
-    description: "NLP, computer vision and LLM-powered tools, from data to working prototype.",
+    title: "NLP, LLMs & ML",
+    description: "LLM fine-tuning (LoRA/QLoRA), machine translation, computer vision and on-device models, from data to working product.",
   },
   {
     icon: <Globe size={20} />,

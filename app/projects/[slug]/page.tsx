@@ -148,7 +148,7 @@ export default async function PostPage({ params }: Props) {
             Need something like this built?
           </p>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            I&apos;m open to full-time roles, internships and freelance projects.
+            I&apos;m open to full-time roles and freelance projects.
           </p>
           <div className="flex flex-col gap-3 mt-4 sm:flex-row">
             <Link

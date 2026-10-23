@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
+import { LanguageSwitcher } from "./components/language-switcher";
 import { siteConfig } from "./site";
 import { Footer } from "./components/footer";
 
@@ -72,7 +73,7 @@ const siteJsonLd = {
       description: siteConfig.description,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Bhubaneswar",
+        addressLocality: "Dimapur",
         addressCountry: "IN",
       },
       alumniOf: {
@@ -94,6 +95,8 @@ const siteJsonLd = {
         "Machine Learning",
         "Artificial Intelligence",
         "Natural Language Processing",
+        "Low-Resource NLP",
+        "Large Language Models",
         "Computer Vision",
         "Android Development",
         "Flutter",
@@ -152,7 +155,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <Footer />
-          <div className="fixed bottom-6 right-6 z-50">
+          <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
           <Analytics />

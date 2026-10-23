@@ -6,5 +6,21 @@
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
-} 
+}
+
+/* Google Translate: hide its top banner, tooltips and hover highlight (see language-switcher.tsx). */
+.goog-te-banner-frame,
+body > .skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
 

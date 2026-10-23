@@ -1,0 +1,36 @@
+---
+title: NagaTranslate
+description: A live translator and learning site for Nagamese, Ao and Sema, three low-resource Naga languages. Retrieval-grounded LLM translation on Vercel Edge, plus an Android app.
+url: https://www.nagatranslate.in
+date: 2026-06-27
+tags: [ai, web, mobile]
+published: true
+---
+
+[NagaTranslate](https://www.nagatranslate.in) translates between English and **Nagamese, Ao (Chungli) and Sema (Sümi)**, languages with very little digital text. I built the whole thing: data, backend, website and Android app. It is in production.
+
+## How translation works
+
+Large language models do not know these languages well enough to translate them unaided. Instead, each request is grounded in real examples:
+
+1. **Retrieval**: a BM25 retriever with coverage scoring and spelling-variant folding finds the most relevant sentence pairs and grammar notes in curated corpora for the target language.
+2. **Generation**: an LLM translates using those examples and per-language grammar rules.
+3. **Guarding**: Nagamese output is checked against real published text, and word forms that never occur there (often borrowed mainland forms) are rewritten.
+
+The corpora are built from public-domain and openly licensed sources (historical grammars, dictionaries, Bible translations), cleaned with a reproducible pipeline and checked against real-world usage in news text.
+
+## Beyond translation
+
+- **Beta languages**: Tangkhul, Angami, Rongmei and Phom, each clearly marked as beta.
+- **Community data**: speakers contribute and correct phrases for 22 Naga languages, which feeds future models.
+- **Learning guides**: long-form pages on grammar and everyday phrases.
+
+## Stack
+
+- Vite and React 19 single-page app, prerendered to static HTML for speed and search visibility.
+- Vercel Edge Functions for the translation and chat APIs, with fail-closed rate limiting on Vercel KV.
+- A Flutter Android app that uses the same API.
+
+Related research: [NagaNLP](/projects/NagaNLP).
+
+Try it: [www.nagatranslate.in](https://www.nagatranslate.in)

@@ -41,7 +41,7 @@ export default function ContactPage() {
             Let&apos;s work together
           </h1>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-            I&apos;m open to full-time roles, internships and freelance projects.
+            I&apos;m open to full-time software, ML and research roles (including relocation or remote), and freelance projects: Flutter apps, ML and NLP systems, and LLM-powered tools.
             If you&apos;re hiring or have a project in mind, send me an email — I&apos;d love to hear about it.
           </p>
           <div className="flex flex-col gap-3 mt-8 sm:flex-row">
@@ -50,7 +50,7 @@ export default function ContactPage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-md duration-200 bg-zinc-900 text-zinc-50 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
             >
               <Briefcase className="w-4 h-4" />
-              Offer a job / internship
+              Offer a job
             </Link>
             <Link
               href={freelanceMailto}

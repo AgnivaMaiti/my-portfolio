@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { ArrowRight, ChevronDown, FileText, GraduationCap, Mail } from "lucide-react";
+import { ArrowRight, ChevronDown, ExternalLink, FileText, GraduationCap, Mail } from "lucide-react";
 import { allProjects } from "contentlayer/generated";
 import Particles from "./components/particles";
 import { Card } from "./components/card";
@@ -9,7 +9,21 @@ import { Article } from "./projects/article";
 import { resumeData } from "./resume-data";
 import { navLinks, siteConfig } from "./site";
 
-const featuredSlugs = ["Murmuration", "Resume-Analyzer", "Startup-Validator", "Geeti"];
+// Strongest evidence first: a shipped app with real users, the research, then NLP/agent work.
+const featuredSlugs = [
+  "GScholar",
+  "NagaNLP",
+  "NagaTranslate",
+  "Murmuration",
+  "Tokenizer-for-Bengali",
+  "Semantic-Emotification",
+];
+
+const highlights = [
+  { label: "EMNLP 2025 · WMT 2026 · GlobalSouthML at ICML 2026", href: "/#publications" },
+  { label: "100K+ Play Store downloads", href: "/projects/GScholar" },
+  { label: "B.Tech CSE, KIIT 2026 (8.72 CGPA)", href: "/resume" },
+];
 
 const sectionHeading = "text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl";
 const primaryButton =
@@ -23,7 +37,7 @@ export default function Home() {
   const featured = featuredSlugs
     .map((slug) => allProjects.find((p) => p.slug === slug && p.published))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
-  const experience = resumeData.experience.slice(0, 5);
+  const experience = resumeData.experience.filter((exp) => exp.featured);
   const { education } = siteConfig;
 
   return (
@@ -48,7 +62,7 @@ export default function Home() {
           className="absolute inset-0 -z-10 animate-fade-in"
           quantity={100}
         />
-        <h1 className="py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 bg-zinc-900 dark:bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
+        <h1 translate="no" className="notranslate py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 bg-zinc-900 dark:bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
           {siteConfig.name}
         </h1>
 
@@ -57,7 +71,19 @@ export default function Home() {
           <p className="text-lg font-medium sm:text-xl text-zinc-800 dark:text-zinc-200">
             {siteConfig.role}
           </p>
-          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-500">
+          <ul className="flex flex-wrap justify-center gap-2 mt-4" aria-label="Highlights">
+            {highlights.map((h) => (
+              <li key={h.label}>
+                <Link
+                  href={h.href}
+                  className="inline-block px-3 py-1 text-xs font-medium border rounded-full duration-200 border-zinc-300 text-zinc-700 hover:border-zinc-500 hover:text-zinc-950 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-400 dark:hover:text-white"
+                >
+                  {h.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="max-w-xl mt-4 text-base text-zinc-700 dark:text-zinc-400">
             {siteConfig.tagline}
           </p>
 
@@ -69,7 +95,7 @@ export default function Home() {
               <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-emerald-500" />
               <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500" />
             </span>
-            Open to full-time roles, internships &amp; freelance projects
+            {siteConfig.availability}
           </Link>
 
           <div className="flex flex-col items-center gap-3 mt-6 sm:flex-row">
@@ -112,6 +138,29 @@ export default function Home() {
               Read more about me <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+        </section>
+
+        <section id="publications" aria-labelledby="publications-heading" className="pb-20 scroll-mt-8">
+          <h2 id="publications-heading" className={sectionHeading}>
+            Publications
+          </h2>
+          <ol className="mt-6 space-y-5">
+            {resumeData.publications.map((pub) => (
+              <li key={pub.url}>
+                <p className="text-xs font-medium tracking-wide uppercase text-zinc-500">{pub.venue}</p>
+                <a
+                  href={pub.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-1.5 mt-1 font-medium text-zinc-900 hover:underline dark:text-zinc-100"
+                >
+                  {pub.title}
+                  <ExternalLink className="w-4 h-4 mt-1 shrink-0" />
+                </a>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{pub.authors}</p>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section aria-labelledby="services-heading" className="pb-20">
@@ -168,7 +217,7 @@ export default function Home() {
               Let&apos;s work together
             </h2>
             <p className="max-w-xl mx-auto mt-3 text-zinc-600 dark:text-zinc-400">
-              Hiring for a full-time role or internship, or have a freelance project in mind? I&apos;d love to hear about it.
+              Hiring for a software, ML or research role, or have a freelance app, ML or NLP project in mind? I&apos;m open to relocation and remote work, and I&apos;d love to hear about it.
             </p>
             <div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
               <Link href="/contact" className={primaryButton}>
