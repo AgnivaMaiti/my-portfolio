@@ -207,19 +207,19 @@ export const policies: Policy[] = [
   },
   {
     slug: "biorxiv-reader",
-    app: "BioRxiv Reader",
+    app: "Vesicle",
     packageId: "com.spontaneum.biorxiv",
     service: "biorxiv.org and the public bioRxiv API",
     serviceOwner: "bioRxiv and Cold Spring Harbor Laboratory",
     servicePrivacyUrl: "https://www.biorxiv.org/content/privacy-statement",
-    updated: "19 September 2026",
+    updated: "7 November 2026",
     intro: [
-      "BioRxiv Reader is an unofficial, independent reader for bioRxiv. It is not affiliated with, endorsed by, or supported by bioRxiv or Cold Spring Harbor Laboratory.",
+      "Vesicle is an independent, unofficial app that displays biology preprints from bioRxiv. It is not affiliated with, endorsed by, or supported by bioRxiv or Cold Spring Harbor Laboratory.",
       "The short version: no account, no ads, no analytics, nothing sent to me. Your saved papers and the notes you write on them never leave your phone.",
     ],
     sections: [
       ...commonSections({
-        app: "BioRxiv Reader",
+        app: "Vesicle",
         service: "biorxiv.org and the public bioRxiv API",
         serviceOwner: "bioRxiv and Cold Spring Harbor Laboratory",
         servicePrivacyUrl: "https://www.biorxiv.org/content/privacy-statement",
