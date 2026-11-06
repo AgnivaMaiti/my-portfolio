@@ -174,19 +174,19 @@ export const policies: Policy[] = [
   },
   {
     slug: "wikiquotes-app",
-    app: "WikiQuotes App",
+    app: "Quotefolio",
     packageId: "com.spontaneum.wikiquotes",
     service: "Wikiquote and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
-    updated: "19 September 2026",
+    updated: "7 November 2026",
     intro: [
-      "WikiQuotes App is an unofficial, independent reader for Wikiquote. It is not affiliated with or endorsed by the Wikimedia Foundation.",
+      "Quotefolio is an independent, unofficial app that displays quotations from Wikiquote. It is not affiliated with, endorsed by, or supported by the Wikimedia Foundation.",
       "The short version: the app collects nothing about you, has no account, no ads and no analytics, and only talks to Wikimedia to fetch the quotations you asked for.",
     ],
     sections: [
       ...commonSections({
-        app: "WikiQuotes App",
+        app: "Quotefolio",
         service: "Wikiquote and the Wikimedia Foundation's APIs",
         serviceOwner: "The Wikimedia Foundation",
         servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
