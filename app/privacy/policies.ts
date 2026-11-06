@@ -129,14 +129,14 @@ export const policies: Policy[] = [
   },
   {
     slug: "wikivoyager-app",
-    app: "WikiVoyager App",
+    app: "Itinerarium",
     packageId: "com.spontaneum.wikivoyager",
     service: "Wikivoyage and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
-    updated: "19 September 2026",
+    updated: "7 November 2026",
     intro: [
-      "WikiVoyager App is an unofficial, independent reader for Wikivoyage. It is not affiliated with or endorsed by the Wikimedia Foundation.",
+      "Itinerarium is an independent travel guide app that displays content from Wikivoyage. It is not affiliated with or endorsed by the Wikimedia Foundation.",
       "The short version: no account, no ads, no analytics, nothing sent to me. The app asks for your location only for the Nearby screen, and only while you are using it.",
     ],
     sections: [
@@ -144,13 +144,13 @@ export const policies: Policy[] = [
         heading: "Location",
         body: [
           "This is the one piece of sensitive data the app touches, so it gets its own section.",
-          "The Nearby screen finds travel destinations within about 10 km of you. To do that, the app reads your approximate or precise location from Android and sends those coordinates to Wikimedia's geosearch API, which returns the nearby articles. That request is the only place your coordinates go.",
+          "The Nearby screen finds travel destinations within about 10 km of you. To do that, the app reads your approximate location from Android (it never asks for precise location) and sends those coordinates to Wikimedia's geosearch API, which returns the nearby articles. That request is the only place your coordinates go.",
           "Your location is not stored on the device, not written to any log, not attached to anything else, and never sent to me. It is read when you open Nearby and discarded afterwards.",
           "The permission is optional. If you decline it, every other part of the app works normally; only Nearby stops being useful.",
         ],
       },
       ...commonSections({
-        app: "WikiVoyager App",
+        app: "Itinerarium",
         service: "Wikivoyage and the Wikimedia Foundation's APIs",
         serviceOwner: "The Wikimedia Foundation",
         servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
@@ -167,7 +167,7 @@ export const policies: Policy[] = [
         heading: "Permissions",
         bullets: [
           "Internet access, to fetch travel guides.",
-          "Approximate and precise location, used only by the Nearby screen, as described above. Optional.",
+          "Approximate location, used only by the Nearby screen, as described above. Optional.",
         ],
       },
     ],
