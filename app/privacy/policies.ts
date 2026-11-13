@@ -20,6 +20,8 @@ export type PolicySection = {
 
 export type Policy = {
   slug: string;
+  /** Old URLs that must keep resolving (builds and console entries already point at them). */
+  aliases?: string[];
   app: string;
   packageId: string;
   service: string;
@@ -94,13 +96,14 @@ const commonSections = (p: {
 
 export const policies: Policy[] = [
   {
-    slug: "wikitionary-app",
+    slug: "verbarium",
+    aliases: ["wikitionary-app"],
     app: "Verbarium",
-    packageId: "com.spontaneum.wikitionary",
+    packageId: "com.spontaneum.verbarium",
     service: "Wiktionary and the Wikimedia Foundation's APIs",
     serviceOwner: "The Wikimedia Foundation",
     servicePrivacyUrl: "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
-    updated: "7 November 2026",
+    updated: "13 November 2026",
     intro: [
       "Verbarium is an independent dictionary app that displays content from Wiktionary. It is not affiliated with, endorsed by, or supported by the Wikimedia Foundation.",
       "The short version: the app collects nothing about you, has no account, no ads and no analytics, and the only network requests it makes are to Wikimedia to fetch the dictionary content you asked for.",
@@ -128,7 +131,8 @@ export const policies: Policy[] = [
     ],
   },
   {
-    slug: "wikivoyager-app",
+    slug: "itinerarium",
+    aliases: ["wikivoyager-app"],
     app: "Itinerarium",
     packageId: "com.spontaneum.wikivoyager",
     service: "Wikivoyage and the Wikimedia Foundation's APIs",
@@ -173,7 +177,8 @@ export const policies: Policy[] = [
     ],
   },
   {
-    slug: "wikiquotes-app",
+    slug: "quotefolio",
+    aliases: ["wikiquotes-app"],
     app: "Quotefolio",
     packageId: "com.spontaneum.wikiquotes",
     service: "Wikiquote and the Wikimedia Foundation's APIs",
@@ -206,7 +211,8 @@ export const policies: Policy[] = [
     ],
   },
   {
-    slug: "biorxiv-reader",
+    slug: "vesicle",
+    aliases: ["biorxiv-reader"],
     app: "Vesicle",
     packageId: "com.spontaneum.biorxiv",
     service: "biorxiv.org and the public bioRxiv API",
@@ -322,4 +328,6 @@ export const policies: Policy[] = [
 ];
 
 export const getPolicy = (slug: string): Policy | undefined =>
-  policies.find((policy) => policy.slug === slug);
+  policies.find(
+    (policy) => policy.slug === slug || (policy.aliases ?? []).includes(slug),
+  );

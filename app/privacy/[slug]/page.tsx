@@ -7,7 +7,9 @@ import { getPolicy, policies } from "../policies";
 type Props = { params: { slug: string } };
 
 export const generateStaticParams = () =>
-  policies.map((policy) => ({ slug: policy.slug }));
+  policies.flatMap((policy) =>
+    [policy.slug, ...(policy.aliases ?? [])].map((slug) => ({ slug })),
+  );
 
 export function generateMetadata({ params }: Props): Metadata {
   const policy = getPolicy(params.slug);
