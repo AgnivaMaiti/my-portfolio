@@ -214,7 +214,7 @@ export const policies: Policy[] = [
     slug: "vesicle",
     aliases: ["biorxiv-reader"],
     app: "Vesicle",
-    packageId: "com.spontaneum.biorxiv",
+    packageId: "com.spontaneum.vesicle",
     service: "biorxiv.org and the public bioRxiv API",
     serviceOwner: "bioRxiv and Cold Spring Harbor Laboratory",
     servicePrivacyUrl: "https://www.biorxiv.org/content/privacy-statement",
